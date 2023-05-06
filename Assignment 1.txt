@@ -1,0 +1,201 @@
+>> Compiler's default constructor
+
+using System;
+class person //object is a base class for any given class
+{
+    readonly int pid; //instance readonly variable
+    string pname; //instance variable
+    int age;
+    public static void Main()
+    {
+        person obj = new person(); //obj is an object of class person
+        obj.pname = "Virat Kohli";
+        obj.age = 34;
+
+        Console.WriteLine(obj.pid + " " +obj.pname + " "+obj.age);
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+>> User's own default constructor
+
+using System; // system is a namespace contains multiple classes
+class person //object is a base class for any given class
+{
+    readonly int pid; //instance readonly variable
+    string pname; //instance variable
+    int age;
+    person()
+    {
+        pid = 201;
+    }
+    public static void Main()
+    {
+        person obj = new person(); //obj is an object of class person
+        obj.pname = "Virat Kohli";
+        obj.age = 34;
+
+        Console.WriteLine(obj.pid + " " +obj.pname + " "+obj.age);
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+>> User's own parameterized constructor
+
+using System; // system is a namespace contains multiple classes
+class person //object is a base class for any given class
+{
+    readonly int pid; //instance readonly variable
+    string pname; //instance variable
+    int age;
+    person(int id)
+    {
+        pid = id;
+    }
+    public static void Main()
+    {
+        person obj = new person(183); //obj is an object of class person
+        obj.pname = "Virat Kohli";
+        obj.age = 34;
+
+        Console.WriteLine(obj.pid + " " +obj.pname + " "+obj.age);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+>> STRING PALINDROME OR NOT
+
+using System;
+
+class checkpalindrome
+{
+    public static void Main(string[] str)
+    {
+        string strr; //Instance Variable
+        string revstr = string.Empty;
+        Console.WriteLine("Program to check a string is Palindrome or not \n ");
+        Console.WriteLine("Enter a string here = ");
+        strr = Console.ReadLine().ToLower();
+        for(int i = strr.Length-1; i>=0; i-- )
+        {
+            revstr += strr[i].ToString(); 
+        }
+        if(revstr==strr)
+        {
+            Console.WriteLine("\n Entered String is Palindrome ");
+        }
+        else
+        {
+            Console.WriteLine("\n Entered String  is not Palindrome");
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Check Duplicate Characters
+
+using System;
+
+class duplicatechar
+{
+    static void Main(string[] args)
+    {
+        string str = string.Empty;
+        Console.WriteLine("Enter any string = \n");
+        str = Console.ReadLine();
+
+        while (str.Length > 0)
+        {
+            int count = 0;
+            Console.WriteLine(str[0] + "=");
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[0] == str[i])
+                {
+                    count++;
+                }
+
+            }
+            Console.WriteLine(count);
+            str = str.Replace(str[0].ToString(), string.Empty);
+
+            Console.ReadLine();
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+>>
+
+using System;
+class IPL
+{
+    int position; //Instance variable
+
+    string Team_name, role; //Instance Variable
+
+    string captain_name; //Instance Variable
+
+    int age; //Instance Variable
+
+
+    IPL(int pos, string tn, string cn, string r, int a ) // Parameterized Constructor
+    {
+        this.position = pos;
+        this.Team_name = tn;
+        this.captain_name = cn;
+        this.role = r;
+        this.age = a;
+    }
+
+    public void display() //Member Function
+    {
+        Console.WriteLine("\nPosition = " + position + "\nTeam Name = " + Team_name + "\nCaptain Name = " + captain_name + "\nRole = " + role + "\nAge = " + age);
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("IPL 2023 Points Table\n");
+
+        IPL obj1 = new IPL(1, "GT", "Hardik Pandya", "All Rounder", 30);
+        Console.WriteLine("Team Position = " + obj1.position + "\nTeam " + obj1.Team_name + " \nCaptain's Name = " + obj1.captain_name + " \nRole = " + obj1.role + "\nAge = " + obj1.age);
+
+        IPL obj2 = new IPL(2, "LSG", "KL Rahul", "Batsman", 30);
+        Console.WriteLine("\nTeam Position = " + obj2.position + "\nTeam " + obj2.Team_name + " \nCaptain's Name = " + obj2.captain_name + " \nRole = " + obj2.role + "\nAge = " + obj2.age);
+
+        IPL obj3 = new IPL(3, "CSK", "MS Dhoni", "WK/Batsman", 42);
+        Console.WriteLine("\nTeam Position = " + obj3.position + "\nTeam " + obj3.Team_name + " \nCaptain's Name = " + obj3.captain_name + " \nRole = " + obj3.role + "\nAge = " + obj3.age);
+
+        IPL obj4 = new IPL(4,"RR","Sanju Samson","WK/Batsman", 29 );
+        Console.WriteLine("\nTeam Position = "+obj4.position+"\nTeam " + obj4.Team_name+" \nCaptain's Name = "+obj4.captain_name+" \nRole = "+obj4.role+"\nAge = "+obj4.age);
+
+        IPL obj5 = new IPL(5, "RCB", "Faf Du Plessis", "Batsman", 38);
+        Console.WriteLine("\nTeam Position = " + obj5.position + "\nTeam " + obj5.Team_name + " \nCaptain's Name = " + obj5.captain_name + " \nRole = " + obj5.role + "\nAge = " + obj5.age);
+
+        IPL obj6 = new IPL(6, "MI", "Rohit Sharma", "Batsman", 35);
+        obj6.display(); //Member function calling
+
+        IPL obj7 = new IPL(7, "PBKS", "Shikhar Dhawan", "Batsman", 37);
+        obj7.display();
+
+        IPL obj8 = new IPL(8, "KKR", "Nitish Rana", "Batsman", 28);
+        obj8.display();
+
+        IPL obj9 = new IPL(9, "SRH", "Adien Markaram", "Batsman", 29);
+        obj9.display();
+
+        IPL obj10 = new IPL(10, "DC", "David Warner", "Batsman", 37);
+        obj10.display();
+
+
+
+
+    }
+    
+}
