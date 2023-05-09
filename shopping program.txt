@@ -1,0 +1,68 @@
+using System;
+
+class shopping
+{
+    int amount; //private variable
+     mall obj2 = new mall();
+
+    public int shopAmount //Encapsulation or wrapper
+    {
+        set
+        {
+            amount = value;
+            if (amount < 10000)
+            {
+                obj2.noshopping();
+            }
+            else
+            {
+                obj2.yesshopping();
+            }
+        }
+
+        get
+        {
+            return amount;
+        }
+
+    }
+}
+
+    class mall
+    {
+        string mallname; //Private Variable
+        public void mallInfo()
+        {
+            Console.WriteLine("\n Enter mall name where you want to go for shopping : ");
+            mallname = Console.ReadLine();
+        }
+        
+        public void noshopping()
+        {
+            Console.WriteLine(" Oopss!!!! Add some more money in your Wallet or Stay at Home!");
+        }
+        
+        public void yesshopping()
+        {
+            Console.WriteLine(" You have enough amount for Shopping, Lets Shop!!!!!!! ");
+        }
+
+        public void shoppingList()
+        {
+            var obj1 = new shopping();
+            Console.WriteLine("\n Enter amount to spend on shopping = ");
+            int amt = Convert.ToInt32(Console.ReadLine());
+            obj1.shopAmount = amt;
+            //Console.WriteLine(obj1.shopAmount);
+        }
+    }
+
+    class person
+    {
+        public static void Main()
+        {
+            var obj = new mall();
+            obj.mallInfo();
+            obj.shoppingList();
+        }
+    }
