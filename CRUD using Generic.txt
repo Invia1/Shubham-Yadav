@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+
+class schoolname
+{
+    List<string> slist = new List<string>()
+    {
+        "Kendriya Vidyalaya","ARMY Public School","DPS","Amity International School"
+
+    };
+
+    public void printSchoolName()
+    {
+        foreach(var s in slist)
+        {
+            Console.WriteLine(s);
+        }
+    }
+    public void addSchoolName()
+    {
+        slist.Add("Dayawati Public School");
+        Console.WriteLine("\n Updated List:");
+        foreach(var s in slist)
+        {
+            Console.WriteLine(s);
+        }
+    }
+
+    public void removeSchoolName()
+    {
+        slist.Remove("Amity International School");
+        Console.WriteLine("\n Updated List:");
+        foreach (var s in slist)
+        {
+            Console.WriteLine(s);
+        }
+    }
+
+    public void insertSchoolName()
+    {
+        slist.Insert(5, "Mount Carmel School");
+        Console.WriteLine("\n Updated List:");
+        foreach (var s in slist)
+        {
+            Console.WriteLine(s);
+        }
+
+    }
+
+    public void searchSchoolName()
+    {
+        var search = slist.Contains(slist[2]);
+        Console.WriteLine("Searched School Name: " + slist.Contains(slist[2]));
+
+        if(search==true)
+            {
+                Console.WriteLine("Searched school name is present in given Data.");
+            }
+        else
+            {
+                Console.WriteLine("Searched school name is not present in given data");
+            }
+        
+    }
+
+    public void countSchools()
+    {
+        int total = slist.Count;
+        Console.WriteLine("Total schools in the list:" + total);
+    }
+
+    public void switchfunc()
+    {
+        Console.WriteLine("Enter your choice: ");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        switch(n)
+        {
+            case 1:
+                {
+                    addSchoolName();
+                }break;
+
+            case 2:
+                {
+                    removeSchoolName();
+                }
+                break;
+
+            case 3:
+                {
+                    insertSchoolName();
+                }
+                break;
+
+            case 4:
+                {
+                    searchSchoolName();
+                }
+                break;
+
+            case 5:
+                {
+                    countSchools();
+                }
+                break;
+        }
+    }
+
+}
+
+class maincls
+{
+    public static void Main()
+    {
+        Console.WriteLine("List of Schools: ");
+
+        schoolname obj = new schoolname();
+
+        obj.printSchoolName();
+
+        Console.WriteLine("Press\n 1 for to add your school name in the list \n 2 for to remove your school name from the list\n 3 for to change or update your school name in the list\n 4 for to search your school name in the list \n 5 to count total number of schools in the list.");
+        
+        obj.switchfunc();
+        
+        
+    }
+    
+    
+}
