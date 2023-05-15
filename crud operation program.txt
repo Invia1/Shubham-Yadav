@@ -1,0 +1,119 @@
+using System;
+using System.Collections;
+
+class crudoperation
+{
+    ArrayList arr = new ArrayList()
+    {
+        10, "Sachin Tendulkar", 7, "MSD", 18, "Virat Kohli", 45, "Rohit Sharma"
+    };
+
+    public void addData()
+    {
+        arr.Add(401);
+        arr.Add("Rinku Singh");
+        arr.Add("KKR");
+
+        Console.WriteLine("Data after adding:");
+
+        foreach (var x in arr)
+        {
+            Console.WriteLine(x);
+
+        }
+
+    }
+
+    public void removeData()
+    {
+        arr.RemoveAt(5);
+
+        Console.WriteLine("Data after removing:");
+
+        foreach (var x in arr)
+        {
+            Console.WriteLine(x);
+        }
+    }
+
+    public void insertData()
+    {
+
+        arr.Insert(6, "Sanju samson");
+        arr.Insert(7, "RR");
+
+        Console.WriteLine("Data after updating:");
+
+        foreach (var x in arr)
+        {
+            Console.WriteLine(x);
+
+        }
+    }
+
+    public void searchData()
+    {
+        var search = arr.Contains(arr[5]);
+        Console.WriteLine("Searched data  :" + arr.Contains(arr[0]));
+        if(search == true)
+        {
+            Console.WriteLine("Searched item is present in given Data.");
+        }
+        else 
+        {
+            Console.WriteLine("Searched item is not present in given data");
+        }
+    }
+
+    public static void Main()
+    {
+        crudoperation obj = new crudoperation();
+
+        Console.WriteLine("Original Data :");
+        foreach (var x in obj.arr)
+        {
+            Console.WriteLine(x);
+        }
+
+        Console.WriteLine("Press\n 1 for Add Data\n 2 for Insert Data\n 3 for Remove Data\n 4 for Search Data");
+
+        obj.switchfunc();
+
+
+
+    }
+
+
+    public void switchfunc()
+    {
+        Console.WriteLine("Enter your choice: ");
+        int x = Convert.ToInt32(Console.ReadLine());
+
+        crudoperation obj = new crudoperation();
+
+        switch (x)
+        {
+            case 1:
+                {
+                    obj.addData();
+                }
+                break;
+            case 2:
+                {
+                    obj.insertData();
+                }
+                break;
+            case 3:
+                {
+                    obj.removeData();
+                }
+                break;
+            case 4:
+                {
+                    obj.searchData();
+                }
+                break;
+        }
+    }
+}
+
