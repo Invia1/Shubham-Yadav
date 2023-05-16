@@ -1,0 +1,202 @@
+Day 8 (16/05/2023)
+>> Models Folder
+ 
+using System;
+
+namespace employeeApp.models
+{
+    public class employee
+    {
+        public int eID { get; set; }     
+
+        public string? eName { get; set; }
+        public int eAge { get; set; }
+    }
+}
+
+.....................................................................
+>> Service Folder
+
+using employeeApp.models;
+using employeeApp.UI;
+using System;
+
+namespace employeeApp.serivce
+{
+    public class employeeService
+    {
+        List<employee> objList = new List<employee>();
+
+        public void addData()
+        {
+            employee obj2 = new employee();
+            Console.WriteLine("Add more Employees in the list:");
+            Console.WriteLine("Enter ID of the Employee:");
+            obj2.eID = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Name of the Employee:");
+            obj2.eName = Console.ReadLine();
+            Console.WriteLine("Enter Age of the Employee:");
+            obj2.eAge = Convert.ToInt32(Console.ReadLine());
+
+            createEmployee(obj2);
+        }
+
+        static void display()
+        {
+            Console.WriteLine("Press\n 1 for to add more Employee's data in the list \n 2 for to remove Employee data from the list\n 3 for to search Employee data in the list \n 4 to count total number of Employees in the list. \n 5 to exit");
+            int n = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void switchfunc(int x)
+        {
+            employee obj = new employee();
+            switch(x)
+            {
+                case 1:
+                    {
+                        addData();                      
+                        Console.WriteLine("\n Want to Add More then type YES");
+                        string? str = Console.ReadLine();
+                        if( str == "YES")
+                        {
+                            addData();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Updated Employee's Data List:");
+                            List<employee> empList = getEmployeeList();
+                            foreach (var item in empList)
+                            {
+                                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+                            }
+                            display();
+                            
+                        }
+                        
+                    }
+                    break;
+                    
+                    case 2:
+                    {
+                        removeData();
+                    }
+                    break;
+
+                    case 3:
+                    {
+                        searchData();
+                    }
+                    break;
+
+                    case 4:
+                    {
+                        countData();
+                    }
+                    break;
+                    case 5:
+                    {
+                        Console.WriteLine("Thank You");
+                    }
+                    break;
+            }
+        }
+        public int createEmployee(employee emp)  //function to create an new employee also use projectname namespace 
+        {
+            objList.Add(emp);
+            return 0;
+        }
+
+        public List<employee> getEmployeeList()
+        {
+            return objList;
+        }
+
+        public void removeData()
+        {
+            List<employee> empList = getEmployeeList();
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID+" "+item.eName+" "+item.eAge);
+            }
+            empList.RemoveAt(1);
+            Console.WriteLine("Updated List:");
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+
+        }
+
+        public void searchData()
+        {
+            List<employee> empList = getEmployeeList();
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+            var search = empList.Contains(empList[1]);
+            Console.WriteLine("Searched Data: " + empList[1]);
+            if (search == true)
+            {
+                Console.WriteLine("Searched Data is present in given DataList.");
+            }
+            else
+            {
+                Console.WriteLine("Searched Data is not present in given data list");
+            }
+        }
+        public void countData()
+        {
+            List<employee> empList = getEmployeeList();
+            foreach (var item in empList)
+            {
+                Console.WriteLine(item.eID + " " + item.eName + " " + item.eAge);
+            }
+            int total = empList.Count();
+            Console.WriteLine("Total employee's data present in the list: " + total);
+        }
+    }
+}
+...........................................................
+>>Main Folder
+
+using System;
+using employeeApp.models;
+using employeeApp.serivce;
+
+namespace employeeApp.UI
+{
+    public class mainApp
+    {
+        public static void Main()
+        {
+            
+            employee obj = new employee();
+            obj.eID = 101;
+            obj.eName = "Manish";
+            obj.eAge = 31;
+
+            employeeService esobj = new employeeService();
+            esobj.createEmployee(obj);
+
+            employee obj1 = new employee();
+            obj1.eID = 102;
+            obj1.eName = "Hardik";
+            obj1.eAge = 29;
+            esobj.createEmployee(obj1);
+
+            List<employee> objList = esobj.getEmployeeList();
+            Console.WriteLine("Employee's Data:");
+            foreach (var data in objList)
+            {
+                Console.WriteLine(data.eID + " " + data.eName + " " + data.eAge);
+            }
+
+            Console.WriteLine("Press\n 1 for to add more Employee's data in the list \n 2 for to remove Employee data from the list\n 3 for to search Employee data in the list \n 4 to count total number of Employees in the list.\n 5 to exit.");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            esobj.switchfunc(n);
+          
+        }
+    }
+}
