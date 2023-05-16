@@ -100,7 +100,7 @@ namespace employeeApp.serivce
                     break;
             }
         }
-        public int createEmployee(employee emp)  //function to create an new employee also use projectname namespace 
+        public int createEmployee(employee emp) 
         {
             objList.Add(emp);
             return 0;
