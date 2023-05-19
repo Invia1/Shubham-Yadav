@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        HashSet<string> hSet = new HashSet<string>();
+
+        hSet.Add("INDIA");
+        hSet.Add("USA");
+        hSet.Add("UK");
+        hSet.Add("Japan");
+        hSet.Add("China");
+
+        hSet.Add("UK");
+        hSet.Add("China");
+
+        Console.WriteLine("Elements Count:" + hSet.Count);
+
+        Console.WriteLine("HashSet Elements are: ");
+        foreach (var item in hSet)
+        {
+            Console.WriteLine(item);
+        }
+
+    }
+}
